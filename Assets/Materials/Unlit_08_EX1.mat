@@ -31,15 +31,18 @@ Material:
     m_Floats:
     - _AmbientScale: 0.209
     - _LightPower: 25.1
-    - _LightThereshold: 0.826
-    - _RimLightPower: 8.74
-    - _RimLightRange: 7.83
-    - _RimLightThreshold: 0.343
-    - _ShadowThereshold: 0.437
+    - _LightSmoothstep: 0
+    - _LightThereshold: 0.737
+    - _RimLightPower: 8.27
+    - _RimLightRange: 3.62
+    - _RimLightSmoothstep: 0.68
+    - _RimLightThreshold: 0.146
+    - _ShadowThereshold: 0.447
+    - _Show: 0
     - _Smooth1: 0.305
     - _Smooth2: 0.804
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 0.26606274, g: 0, b: 1, a: 1}
+    - _RimColor: {r: 0, g: 0.03532791, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
