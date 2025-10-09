@@ -45,7 +45,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 1, g: 0.7369428, b: 0.4764151, a: 1}
+    - _RimColor: {r: 1, g: 0.59803486, b: 0.47450984, a: 1}
     - _ShadowColor: {r: 0.11246794, g: 0.00080099865, b: 0.16981131, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
