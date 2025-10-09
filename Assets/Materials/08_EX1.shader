@@ -3,7 +3,8 @@ Shader "Unlit/08_EX1"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _Color("Color", Color) = (1, 0, 0, 1)
+        _LightColor("LightColor", Color) = (1, 0, 0, 1)
+        _ShadowColor("ShadowColor",Color)=(0,0,0,1)
         _AmbientScale("AmbientScale", range(0, 0.4)) = 0.3
         _LightPower("LightPower", range(0.0001, 30)) = 20
 
@@ -13,6 +14,7 @@ Shader "Unlit/08_EX1"
         _RimLightRange("RimLightRange", range(1, 10)) = 1
 
         _ShadowThereshold("ShadowThereshold", range(0, 1)) = 0.5
+        _DiffSmoothstep("ShadowSmoothste", range(0, 1)) = 0.05
         _LightThereshold("LightThereshold", range(0, 1)) = 0.55
         _LightSmoothstep("LightSmoothstep",range(0,5))=0.05
         _RimLightThreshold("RimLightThreshold", range(0.01, 1)) = 0.5
@@ -50,7 +52,8 @@ Shader "Unlit/08_EX1"
             sampler2D _MainTex;
             float4 _MainTex_ST;
             float _AmbientScale;
-            fixed4 _Color;
+            fixed4 _LightColor;
+fixed4 _ShadowColor;
             float _LightPower;
 
             fixed4 _RimColor;
@@ -61,6 +64,7 @@ Shader "Unlit/08_EX1"
             float _LightThereshold;
             float _RimLightThreshold;
 
+            float _DiffSmoothstep;
             float _LightSmoothstep;
             float _RimLightSmoothstep;
 
@@ -82,7 +86,7 @@ Shader "Unlit/08_EX1"
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv * itling + offset);
 
-                fixed4 ambient = col * _AmbientScale * _LightColor0;
+                fixed4 ambient = col * _AmbientScale * _LightColor0+ _ShadowColor;
 
                 float intensity = saturate(dot(normalize(i.normal), _WorldSpaceLightPos0.xyz));
                 fixed4 diffuse = col * step(_ShadowThereshold, intensity) * _LightColor0;
@@ -91,7 +95,7 @@ Shader "Unlit/08_EX1"
                 float3 lightDir = normalize(_WorldSpaceLightPos0);
                 float3 iNormal = normalize(i.normal);
                 float3 reflectDir = - lightDir + 2 * iNormal * dot(iNormal, lightDir);
-                fixed4 specular = pow(saturate(step(_LightThereshold, dot(reflectDir, eyeDir))), _LightPower) * _LightColor0;
+                fixed4 specular = pow(saturate(step(_LightThereshold, dot(reflectDir, eyeDir))), _LightPower) * _LightColor0* _LightColor;
 
 
                 //法線とカメラのベクトル内積の計算
@@ -101,7 +105,7 @@ Shader "Unlit/08_EX1"
                 fixed4 sumAll = ambient + diffuse + specular + rimResult;
 
                 // == = 各マスクを先に計算 == =
-                float diffMask = step(_ShadowThereshold, intensity);
+                float diffMask = smoothstep(_ShadowThereshold, _ShadowThereshold+_DiffSmoothstep, intensity);
                 float specMask = smoothstep(_LightThereshold,_LightThereshold+_LightSmoothstep,  dot(reflectDir, eyeDir));
                 float rimMask = smoothstep(_RimLightThreshold,_RimLightThreshold+_RimLightSmoothstep, pow(rim, _RimLightRange) * _RimLightPower);
 

@@ -26,18 +26,18 @@ Material:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 0304e886aa0054149afb575fc1c2ab9d, type: 3}
         m_Scale: {x: 5, y: 5}
-        m_Offset: {x: 0, y: 0}
+        m_Offset: {x: 19.52, y: 0}
     m_Ints: []
     m_Floats:
-    - _AmbientScale: 0.209
-    - _LightPower: 25.1
+    - _AmbientScale: 0.4
+    - _LightPower: 30
     - _LightSmoothstep: 0
-    - _LightThereshold: 0.737
-    - _RimLightPower: 8.27
-    - _RimLightRange: 3.62
-    - _RimLightSmoothstep: 0.68
-    - _RimLightThreshold: 0.146
-    - _ShadowThereshold: 0.447
+    - _LightThereshold: 0.847
+    - _RimLightPower: 1.31
+    - _RimLightRange: 1
+    - _RimLightSmoothstep: 0.42
+    - _RimLightThreshold: 1
+    - _ShadowThereshold: 0.821
     - _Show: 0
     - _Smooth1: 0.305
     - _Smooth2: 0.804
