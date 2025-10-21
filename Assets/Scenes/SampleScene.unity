@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: -8309745890264688242, guid: f037880c9da4b354bb5bd5bd2d15674f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ffa4ea410a28b6040bf2a16761450681, type: 2}
+      objectReference: {fileID: 2100000, guid: 089ad0c70773e9e4285b7043d4d88f4c, type: 2}
     - target: {fileID: 919132149155446097, guid: f037880c9da4b354bb5bd5bd2d15674f, type: 3}
       propertyPath: m_Name
       value: "\u30B9\u30B6\u30F3\u30CC"
@@ -553,7 +553,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7696743bfe87484e98b69088a5957e8, type: 2}
+  - {fileID: 2100000, guid: 089ad0c70773e9e4285b7043d4d88f4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -592,7 +592,7 @@ Transform:
   m_GameObject: {fileID: 1203056782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.768, y: 0, z: 2.088}
+  m_LocalPosition: {x: 3.07, y: 0, z: 2.57}
   m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
   m_Children: []
