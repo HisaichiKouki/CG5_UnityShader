@@ -1,4 +1,4 @@
-Shader "Unlit/09_Alpha"
+Shader "Unlit/10_Discard"
 {
      Properties{
         _Color("Color", Color) = (1, 0, 0, 1)
