@@ -90,6 +90,18 @@ Shader "Unlit/16_RandomNoise"
                 return lerp(v0010,v0111,u.y)/2+0.5;
             }
 
+            float FractalSumNoise(float density,float2 uv)
+            {
+                float fn;
+                fn=PerlinNoise(density*1,uv)*1.0/2;
+                fn+=PerlinNoise(density*2,uv)*1.0/4;
+                fn+=PerlinNoise(density*8,uv)*1.0/8;
+                fn+=PerlinNoise(density*16,uv)*1.0/16;
+
+                return fn;
+
+            }
+
 
             v2f vert(appdate v)
             {
@@ -106,7 +118,7 @@ Shader "Unlit/16_RandomNoise"
             {
                 float density=_Density;
                 
-                fixed pn=PerlinNoise(density,i.uv);
+                fixed pn=FractalSumNoise(density,i.uv);
                 fixed4 col=fixed4(pn,pn,pn,1);
                 
                return col;
