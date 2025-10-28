@@ -40,6 +40,56 @@ Shader "Unlit/16_RandomNoise"
 
             }
 
+            float randomVec(float2 fact)
+            {
+                float2 angle=float2(
+                    dot(fact,fixed2(127.1,311.7)),
+                    dot(fact,fixed2(269.5,183.3))
+                );
+                return frac(sin(angle)*43758.5453123)*2-1;
+            }
+
+            float ValueNoise(float density,float2 uv)
+            {
+                float2 uvFloor=floor(uv*density);
+                float2 uvFrac=frac(uv*density);
+
+                float v00=random((uvFloor+float2(0,0))/density);
+                float v01=random((uvFloor+float2(0,1))/density);
+                float v10=random((uvFloor+float2(1,0))/density);
+                float v11=random((uvFloor+float2(1,1))/density);
+                
+                fixed2 u=uvFrac*uvFrac*(3-2*uvFrac);
+                float v0010=lerp(v00,v10,u.x);
+                float v0111=lerp(v01,v11,u.x);
+
+                return lerp(v0010,v0111,u.y);
+            }
+
+            float PerlinNoise(float density,float2 uv)
+            {
+
+                float2 uvFloor=floor(uv*density);
+                float2 uvFrac=frac(uv*density);
+
+                float v00=randomVec(uvFloor+float2(0,0));
+                float v01=randomVec(uvFloor+float2(0,1));
+                float v10=randomVec(uvFloor+float2(1,0));
+                float v11=randomVec(uvFloor+float2(1,1));
+
+                float c00=dot(v00,uvFrac-fixed2(0,0));
+                float c01=dot(v01,uvFrac-fixed2(0,1));
+                float c10=dot(v10,uvFrac-fixed2(1,0));
+                float c11=dot(v11,uvFrac-fixed2(1,1));
+
+                fixed2 u=uvFrac*uvFrac*(3-2*uvFrac);
+
+                float v0010=lerp(c00,c10,u.x);
+                float v0111=lerp(c01,c11,u.x);
+
+                return lerp(v0010,v0111,u.y)/2+0.5;
+            }
+
 
             v2f vert(appdate v)
             {
@@ -55,18 +105,11 @@ Shader "Unlit/16_RandomNoise"
             fixed4 frag(v2f i) : SV_Target
             {
                 float density=_Density;
-                float v00=random((floor(i.uv*density)+float2(0,0))/density);
-                float v01=random((floor(i.uv*density)+float2(0,1))/density);
-                float v10=random((floor(i.uv*density)+float2(1,0))/density);
-                float v11=random((floor(i.uv*density)+float2(1,1))/density);
                 
-                float2 p=frac(i.uv*density);
-                float2 v=p*p*(3-2*p);
-                float v0010=lerp(v00,v10,v.x);
-                float v0111=lerp(v01,v11,v.x);
-                fixed lerpNoise=lerp(v0010,v0111,v.y);
-
-                return fixed4(lerpNoise,lerpNoise,lerpNoise,1);
+                fixed pn=PerlinNoise(density,i.uv);
+                fixed4 col=fixed4(pn,pn,pn,1);
+                
+               return col;
             }
             ENDCG
         }
