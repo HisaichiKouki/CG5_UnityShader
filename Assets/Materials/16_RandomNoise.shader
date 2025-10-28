@@ -1,7 +1,7 @@
 Shader "Unlit/16_RandomNoise"
 {
    Properties{
-        _Color("Color", Color) = (1, 0, 0, 1)
+    _Density("Density",float)=10
     }
 
     SubShader
@@ -16,7 +16,8 @@ Shader "Unlit/16_RandomNoise"
             # include "UnityCG.cginc"
             # include "Lighting.cginc"
 
-            fixed4 _Color;
+            float _Density;
+
             struct appdate
             {
                 float4 vertex : POSITION;
@@ -53,8 +54,9 @@ Shader "Unlit/16_RandomNoise"
 
             fixed4 frag(v2f i) : SV_Target
             {
-                float r=random(i.uv);
-                fixed4 ambient =_Color*_LightColor0;
+                float density=_Density;
+                float2 uv=floor(i.uv*density)/density;
+                float r=random(uv);
 
                 return fixed4(r,r,r,1);
             }
