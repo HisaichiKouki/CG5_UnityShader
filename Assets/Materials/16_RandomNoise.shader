@@ -61,9 +61,10 @@ Shader "Unlit/16_RandomNoise"
                 float v11=random((floor(i.uv*density)+float2(1,1))/density);
                 
                 float2 p=frac(i.uv*density);
-                float v0010=lerp(v00,v10,p.x);
-                float v0111=lerp(v01,v11,p.x);
-                fixed lerpNoise=lerp(v0010,v0111,p.y);
+                float2 v=p*p*(3-2*p);
+                float v0010=lerp(v00,v10,v.x);
+                float v0111=lerp(v01,v11,v.x);
+                fixed lerpNoise=lerp(v0010,v0111,v.y);
 
                 return fixed4(lerpNoise,lerpNoise,lerpNoise,1);
             }
