@@ -55,10 +55,17 @@ Shader "Unlit/16_RandomNoise"
             fixed4 frag(v2f i) : SV_Target
             {
                 float density=_Density;
-                float2 uv=floor(i.uv*density)/density;
-                float r=random(uv);
+                float v00=random((floor(i.uv*density)+float2(0,0))/density);
+                float v01=random((floor(i.uv*density)+float2(0,1))/density);
+                float v10=random((floor(i.uv*density)+float2(1,0))/density);
+                float v11=random((floor(i.uv*density)+float2(1,1))/density);
+                
+                float2 p=frac(i.uv*density);
+                float v0010=lerp(v00,v10,p.x);
+                float v0111=lerp(v01,v11,p.x);
+                fixed lerpNoise=lerp(v0010,v0111,p.y);
 
-                return fixed4(r,r,r,1);
+                return fixed4(lerpNoise,lerpNoise,lerpNoise,1);
             }
             ENDCG
         }
