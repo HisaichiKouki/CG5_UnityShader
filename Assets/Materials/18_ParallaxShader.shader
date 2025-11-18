@@ -2,8 +2,10 @@ Shader "Unlit/18_ParallaxShader"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
-        _Parallax("ParallaxScale",float)=0.5
+        _MainTex ("MainTexture", 2D) = "white" {}
+        _SubTex ("SubTexture", 2D) = "white" {}
+        _MainParallax("MainParallaxScale",float)=0.5
+        _SubParallax("SubParallaxScale",float)=0.5
 
     }
     SubShader
@@ -37,7 +39,10 @@ Shader "Unlit/18_ParallaxShader"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float _Parallax;
+            float _MainParallax;
+             sampler2D _SubTex;
+            float4 _SubTex_ST;
+            float _SubParallax;
 
             v2f vert (appdata v)
             {
@@ -66,15 +71,16 @@ Shader "Unlit/18_ParallaxShader"
                 //奥に
                 float3 viewDirTS=normalize(-i.viewDirTS);
                 //視差オフセット
-                float2 offset=viewDirTS.xy*_Parallax;
+                float2 mainOffset=viewDirTS.xy*_MainParallax;
+                float2 subOffset=viewDirTS.xy*_SubParallax;
                 //UVスクロール
-                float2 uv=i.uv+offset;
+                float2 mainUV= i.uv*_MainTex_ST.xy+_MainTex_ST.zw+mainOffset;
+                float2 subUV= i.uv*_SubTex_ST.xy+_SubTex_ST.zw+subOffset;
 
-
-
-                
+                fixed4 mainCol = tex2D(_MainTex, mainUV);
+                fixed4 subCol = tex2D(_SubTex, subUV);
                 // apply fog
-                return tex2D(_MainTex,uv);
+                return lerp(mainCol,subCol,subCol.a);
             }
             ENDCG
         }

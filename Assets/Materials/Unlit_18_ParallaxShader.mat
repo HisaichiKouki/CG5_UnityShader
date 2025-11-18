@@ -27,9 +27,15 @@ Material:
         m_Texture: {fileID: 2800000, guid: 35d4d8a1621a56e4e9c1de81f95e4513, type: 3}
         m_Scale: {x: 1.06, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SubTex:
+        m_Texture: {fileID: 2800000, guid: ffa9d45c42cb66444840b84c19072584, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _MainParallax: 2.86
     - _Parallax: 3.3
+    - _SubParallax: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
