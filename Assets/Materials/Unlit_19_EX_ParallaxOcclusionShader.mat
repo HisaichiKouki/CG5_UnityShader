@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_18_ParallaxShader_Height
-  m_Shader: {fileID: 4800000, guid: 5059cb3b582b5124fb528caf5f612ba7, type: 3}
+  m_Name: Unlit_19_EX_ParallaxOcclusionShader
+  m_Shader: {fileID: 4800000, guid: 8317b291954f58f49847e3a7e7c4bb59, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -26,21 +26,19 @@ Material:
     - _HeightTex:
         m_Texture: {fileID: 2800000, guid: 7f3c4184c70485c45a86c1fe3dc3ebe9, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: -0.18, y: 0}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 52be1d7723e1e0b46b2388982fd8336b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SubTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MainParallax: 0.5
-    - _ParallaxDeep: -0.48
+    - _HeightScale: 0.21
+    - _MaxLayers: 1759.7
+    - _Maxayers: 79.03
+    - _MinLayers: 32
+    - _ParallaxDeep: 0.32
     - _ParallaxShallow: 0
-    - _SubParallax: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

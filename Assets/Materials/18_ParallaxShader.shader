@@ -57,8 +57,9 @@ Shader "Unlit/18_ParallaxShader"
                 float3 n=normalize(mul((float3x3)unity_ObjectToWorld,v.normal));                
                 float3 b=cross(n,t)*v.tangent.w*unity_WorldTransformParams.w;
 
+                float3x3 tbn = float3x3(t,b,n);
                 //視線ベクトルをタンジェント空間へ
-                o.viewDirTS=t*viewDirWS.x+b*viewDirWS.y+n*viewDirWS.z;
+                o.viewDirTS= mul(tbn,viewDirWS);
 
                 return o;
             }
