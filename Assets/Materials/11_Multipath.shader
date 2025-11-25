@@ -4,6 +4,7 @@ Shader "Unlit/11_Multipath"
         _Color("Color", Color) = (1, 0, 0, 1)
         _MainTex ("Texture", 2D) = "white" {}
         _Discard("Discard", range(0, 1)) = 0.5
+        _ScrollSpeed("ScrollSpeed", Vector) =(0,0,0,0 )
 
     }
 
@@ -26,6 +27,7 @@ Shader "Unlit/11_Multipath"
         sampler2D _MainTex;
         float4 _MainTex_ST;
         float _AmbientScale;
+        float4 _ScrollSpeed;
 
         float _Discard;
         struct appdate
@@ -70,6 +72,8 @@ Shader "Unlit/11_Multipath"
             {
                 float2 itling = _MainTex_ST.xy;
                 float2 offset = _MainTex_ST.zw;
+                offset+=_ScrollSpeed.xy* _Time.y;
+
                 // sample the texture
                 fixed4 tex = tex2D(_MainTex, i.uv * itling + offset);
                 fixed4 ambient = _Color * tex;
@@ -91,6 +95,7 @@ Shader "Unlit/11_Multipath"
             {
                 float2 itling = _MainTex_ST.xy;
                 float2 offset = _MainTex_ST.zw;
+                 offset+=_ScrollSpeed.xy* _Time.y;
                 // sample the texture
                 fixed4 tex = tex2D(_MainTex, i.uv * itling + offset);
                 fixed4 ambient = _Color * tex;

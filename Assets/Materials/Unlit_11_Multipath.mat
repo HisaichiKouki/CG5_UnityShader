@@ -25,12 +25,13 @@ Material:
     m_TexEnvs:
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 35d4d8a1621a56e4e9c1de81f95e4513, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Scale: {x: 10, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Discard: 0.18
+    - _Discard: 0.833
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ScrollSpeed: {r: 0, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

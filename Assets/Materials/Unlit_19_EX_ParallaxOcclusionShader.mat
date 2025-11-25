@@ -24,21 +24,24 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _HeightTex:
-        m_Texture: {fileID: 2800000, guid: 7f3c4184c70485c45a86c1fe3dc3ebe9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d3c5d865b4f04c4eb5a3741d6aba632, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 52be1d7723e1e0b46b2388982fd8336b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Texture: {fileID: 2800000, guid: 5146b3cc69314fd4c92384472110f998, type: 3}
+        m_Scale: {x: 2, y: 2}
+        m_Offset: {x: -1, y: -1}
     m_Ints: []
     m_Floats:
-    - _HeightScale: 0.21
-    - _MaxLayers: 1759.7
+    - _HeightScale: 0.04
+    - _MaxLayers: 1000
     - _Maxayers: 79.03
-    - _MinLayers: 32
+    - _MinLayers: 1000
     - _ParallaxDeep: 0.32
     - _ParallaxShallow: 0
-    m_Colors: []
+    m_Colors:
+    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _ScrollSpeed: {r: 0.2, g: 0.1, b: 0, a: 0}
+    - _WaveParameter: {r: 0.1, g: 0.84, b: 0.001, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

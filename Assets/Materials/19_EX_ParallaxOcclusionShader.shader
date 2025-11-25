@@ -7,6 +7,10 @@ Shader "Unlit/19_EX_ParallaxOcclusionShader"
         _HeightScale("Height Scale",float)=0
         _MinLayers("Min Layers",float)=8
         _MaxLayers("Max Layers",float)=32
+        _ScrollSpeed("ScrollSpeed", Vector) =(0,0,0,0 )
+        _WaveParameter("WaveParameter",Vector)=(0,0,0,0)
+         _Color("Color", Color) = (1, 0, 0, 1)
+
 
     }
     SubShader
@@ -46,6 +50,77 @@ Shader "Unlit/19_EX_ParallaxOcclusionShader"
             float _HeightScale;
             float _MinLayers;
             float _MaxLayers;
+            float4 _ScrollSpeed;
+            float4 _WaveParameter;
+            fixed4 _Color;
+
+             float random(float2 fact)
+            {
+                return frac(sin(dot(float2(fact.x,fact.y),float2(12.9898,78.233)))*43758.5453);
+
+            }
+
+            float randomVec(float2 fact)
+            {
+                float2 angle=float2(
+                    dot(fact,fixed2(127.1,311.7)),
+                    dot(fact,fixed2(269.5,183.3))
+                );
+                return frac(sin(angle)*43758.5453123)*2-1;
+            }
+
+            float ValueNoise(float density,float2 uv)
+            {
+                float2 uvFloor=floor(uv*density);
+                float2 uvFrac=frac(uv*density);
+
+                float v00=random((uvFloor+float2(0,0))/density);
+                float v01=random((uvFloor+float2(0,1))/density);
+                float v10=random((uvFloor+float2(1,0))/density);
+                float v11=random((uvFloor+float2(1,1))/density);
+                
+                fixed2 u=uvFrac*uvFrac*(3-2*uvFrac);
+                float v0010=lerp(v00,v10,u.x);
+                float v0111=lerp(v01,v11,u.x);
+
+                return lerp(v0010,v0111,u.y);
+            }
+
+            float PerlinNoise(float density,float2 uv)
+            {
+
+                float2 uvFloor=floor(uv*density);
+                float2 uvFrac=frac(uv*density);
+
+                float v00=randomVec(uvFloor+float2(0,0));
+                float v01=randomVec(uvFloor+float2(0,1));
+                float v10=randomVec(uvFloor+float2(1,0));
+                float v11=randomVec(uvFloor+float2(1,1));
+
+                float c00=dot(v00,uvFrac-fixed2(0,0));
+                float c01=dot(v01,uvFrac-fixed2(0,1));
+                float c10=dot(v10,uvFrac-fixed2(1,0));
+                float c11=dot(v11,uvFrac-fixed2(1,1));
+
+                fixed2 u=uvFrac*uvFrac*(3-2*uvFrac);
+
+                float v0010=lerp(c00,c10,u.x);
+                float v0111=lerp(c01,c11,u.x);
+
+                return lerp(v0010,v0111,u.y)/2+0.5;
+            }
+
+            float FractalSumNoise(float density,float2 uv)
+            {
+                float fn;
+                fn=PerlinNoise(density*1,uv)*1.0/2;
+                fn+=PerlinNoise(density*2,uv)*1.0/4;
+                fn+=PerlinNoise(density*8,uv)*1.0/8;
+                fn+=PerlinNoise(density*16,uv)*1.0/16;
+
+                return fn;
+
+            }
 
             
 
@@ -53,7 +128,7 @@ Shader "Unlit/19_EX_ParallaxOcclusionShader"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = v.uv;
+                o.uv =TRANSFORM_TEX(v.uv, _MainTex);
                 //ワールド空間の視線ベクトル
                 float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
                 float3 viewDirWS = _WorldSpaceCameraPos.xyz - worldPos;
@@ -109,13 +184,42 @@ Shader "Unlit/19_EX_ParallaxOcclusionShader"
                 return finalTexCoord;
             }
 
+            float2 WaveOffset(float2 uv, float time, float speed, float amplitude, float frequency)
+            {
+                float2 center = float2(0.5, 0.5);
+                float2 dir = uv - center;
+        
+                float dist = length(dir);
+
+                
+                //float noise = PerlinNoise(8, uv * 4 + time * 0.2);
+                float wave = sin(dist * frequency + time * speed);//+noise*0.2
+
+                return uv + normalize(dir) * wave * amplitude;
+            }
+
             
             fixed4 frag (v2f i) : SV_Target
             {
                 float3 viewDirTS=i.viewDirTS;
-                float2 uvPOM = ParallaxOcclusionMapping(i.uv, viewDirTS);
+               
+
+                
+                float2 noiseScroll=FractalSumNoise(1,i.uv*_ScrollSpeed.xy *sin(_Time.y));
+                //noiseScroll=normalize(dir) *wave*2;
+                i.uv+=noiseScroll;
+                float2 waveUV=WaveOffset(i.uv,_Time.y,_WaveParameter.x,_WaveParameter.y,_WaveParameter.z);
+
+
+                //i.uv.xy+=noiseScroll;
+                
+                float2 uvPOM = ParallaxOcclusionMapping(waveUV, viewDirTS);
                 //uvPOM = clamp(uvPOM, 0.0, 1.0);
-                return tex2D(_MainTex,uvPOM);
+
+                fixed4 finalTex=tex2D(_MainTex,uvPOM);
+                fixed4 randomColor=_Color;
+                finalTex*=_Color;
+                return finalTex;
 
                 // //高さ
                 // float3 viewDirTS=normalize(-i.viewDirTS);

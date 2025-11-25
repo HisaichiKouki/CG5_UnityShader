@@ -5,7 +5,7 @@ Shader "Unlit/13_TextureBlend"
         _MainTex ("Texture", 2D) = "white" {}
         _SubTex("Texture", 2D) = "white" { }
         _MaskTex("MaskTex", 2D) = "white" { }
-        _MaskT("MaskT", range(0, 1)) = 0.5
+        //_MaskT("MaskT", range(0, 1)) = 0.5
 
     }
 
