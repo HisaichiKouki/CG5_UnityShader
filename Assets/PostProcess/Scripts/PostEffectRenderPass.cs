@@ -17,19 +17,20 @@ public class PostEffectRenderPass : ScriptableRenderPass
     //RenderGraphへの描画設定や描画実行など一連の操作
     public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
     {
-        if (material_ != null)
+        if (material_ == null)
         {
             //material_がnullなら従来通りの描画をおこなう
             base.RecordRenderGraph(renderGraph, frameData);
             return;
         }
         //このフレームの描画リソースを取得する
-        UniversalResourceData resourceData=
+        UniversalResourceData resourceData =
             frameData.Get<UniversalResourceData>();
         //取得したResourceDataがBackBufferであれば仕様上読み込み不可なので早期リターン
         if (resourceData.isActiveTargetBackBuffer)
         {
-            return;
+            base.RecordRenderGraph(renderGraph, frameData);
+           // return;
         }
         //カメラ(描画予定)のテクスチャを取得
         TextureHandle cameraTexture = resourceData.activeColorTexture;
@@ -44,12 +45,12 @@ public class PostEffectRenderPass : ScriptableRenderPass
         //仮テクスチャを作成
         TextureHandle tempTexture = renderGraph.CreateTexture(tempDesc);
         //カメラテクスチャにmaterial_を適用し仮テクスチャに出力する設定を作成
-        RenderGraphUtils.BlitMaterialParameters blitMaterialParameters=
+        RenderGraphUtils.BlitMaterialParameters blitMaterialParameters =
             new RenderGraphUtils.BlitMaterialParameters(
-                cameraTexture,tempTexture,material_,0);
+                cameraTexture, tempTexture, material_, 0);
 
-        renderGraph.AddBlitPass( blitMaterialParameters ,"BlitGreenPostEffect");
-        renderGraph.AddCopyPass(tempTexture, cameraTexture, 0,0,0,0,"CopyGreenPostEffect");
+        renderGraph.AddBlitPass(blitMaterialParameters, "BlitGreenPostEffect");
+        renderGraph.AddCopyPass(tempTexture, cameraTexture, "CopyGreenPostEffect");
     }
 
 
