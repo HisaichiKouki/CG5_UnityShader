@@ -25,7 +25,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - contrast: 1
     - saturation: 1
-    m_Colors: []
+    m_Colors:
+    - colorScale: {r: 3.31, g: 1.73, b: 0.76, a: 0.82}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

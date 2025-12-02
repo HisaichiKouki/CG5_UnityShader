@@ -2,6 +2,8 @@ Shader "PostEffect/ToneCorrection"
 {
     Properties{
         saturation("彩度",float)=1
+       colorScale ("色彩倍率", Vector) = (0.2126, 0.7152, 0.0722, 1)
+       contrast("コントラスト",float )=1
     }
     SubShader
     {
@@ -24,19 +26,24 @@ Shader "PostEffect/ToneCorrection"
             #include "Packages/com.unity.render-pipelines.core/Runtime/Utilities/Blit.hlsl"
 
             half saturation;
+            half4 colorScale;
+            half contrast;
             half4 Frag(Varyings input):SV_Target{
                 half4 output=SAMPLE_TEXTURE2D(
                     _BlitTexture,sampler_LinearRepeat,
                     input.texcoord);
 
+                    half3 cs=colorScale.xyz;
+
                     half grayscale=
-                    0.2126*output.r+
-                    0.7152*output.g+
-                    0.0722*output.b;
+                    cs.r*output.r+
+                    cs.g*output.g+
+                    cs.b*output.b;
 
                     half4 monochromeColor=half4 (grayscale,grayscale,grayscale,1);
 
                     half4 outputColor=lerp(monochromeColor,output,saturation);
+                    outputColor=(outputColor-0.5)*contrast+0.5;
                     return outputColor;
             }
            
