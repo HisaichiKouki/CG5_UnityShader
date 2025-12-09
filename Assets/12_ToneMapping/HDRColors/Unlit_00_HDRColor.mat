@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PostEffect_ToneCorrection
-  m_Shader: {fileID: 4800000, guid: b6cd38c40f044c04588b7f180fec7d41, type: 3}
+  m_Name: Unlit_00_HDRColor
+  m_Shader: {fileID: 4800000, guid: b5fa5c4e874beae47bffde626090ede1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -22,12 +22,15 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - contrast: 2.37
-    - saturation: 1
+    - _Intensity: 10
     m_Colors:
-    - colorScale: {r: 3.31, g: 1.73, b: 0.76, a: 0.82}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
