@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_13_02_GaussianBlur
-  m_Shader: {fileID: 4800000, guid: d933349a735ae46409fbe5c87239b711, type: 3}
+  m_Name: Custom_PE_PassThrough
+  m_Shader: {fileID: 4800000, guid: 477d4a7ec1fbae94eab6fce76279042c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,9 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _Sigma: 0.02
-    - _StepWidth: 0.00556
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

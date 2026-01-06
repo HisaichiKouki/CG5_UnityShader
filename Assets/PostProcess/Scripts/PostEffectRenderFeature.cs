@@ -3,7 +3,8 @@ using UnityEngine.Rendering.Universal;
 
 public class PostEffectRenderFeature : ScriptableRendererFeature
 {
-    [SerializeField] private Material postEffectMaterial_;
+    [SerializeField] private Material postEffectMaterial_;//ポストプロセス用マテリアル
+    [SerializeField] private Material passThroughMaterial_;//Blit用マテリアル
     private PostEffectRenderPass renderPass_;
 
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
@@ -17,7 +18,7 @@ public class PostEffectRenderFeature : ScriptableRendererFeature
 
     public override void Create()
     {
-        renderPass_ = new PostEffectRenderPass(postEffectMaterial_);
+        renderPass_ = new PostEffectRenderPass(postEffectMaterial_, passThroughMaterial_);
         renderPass_.renderPassEvent = RenderPassEvent.BeforeRenderingPostProcessing;
 
         //    throw new System.NotImplementedException();

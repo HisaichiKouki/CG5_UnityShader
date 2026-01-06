@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PostEffectRenderFeature
   m_Active: 1
   postEffectMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
+  passThroughMaterial_: {fileID: 2100000, guid: 94689ddd7d52eae438e799740266d3fc, type: 2}
 --- !u!114 &-5292533809211313721
 MonoBehaviour:
   m_ObjectHideFlags: 0
