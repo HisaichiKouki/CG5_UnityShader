@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008607fc273af284b8b2b5ede791b57c, type: 3}
   m_Name: PostEffectRenderFeature
   m_EditorClassIdentifier: Assembly-CSharp::PostEffectRenderFeature
-  m_Active: 1
+  m_Active: 0
   postEffectMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
   passThroughMaterial_: {fileID: 2100000, guid: 94689ddd7d52eae438e799740266d3fc, type: 2}
 --- !u!114 &-5292533809211313721
