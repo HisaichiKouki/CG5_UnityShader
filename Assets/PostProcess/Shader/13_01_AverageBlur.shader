@@ -37,6 +37,8 @@ Shader "Custom/13_01_AverageBlur"
                 float loopCount=0;
                 //ステップ数の整数化
                 _StepNums=floor(_StepNums);
+                //回り込み防止用にテクセルサイズの半分を取得
+                float2 margin=_BlitTexture_TexelSize.xy/2;
 
                 for(float y=-_StepNums/2; y<=_StepNums/2; y+=1.0){
                     for(float x=-_StepNums/2; x<=_StepNums/2; x+=1.0){
@@ -44,7 +46,7 @@ Shader "Custom/13_01_AverageBlur"
                         //サンプリング座標
                         float2 pickUV=IN.texcoord+float2(x,y)*_StepWidth;
                         //回り込み防止
-                        pickUV=clamp(pickUV,0.001,0.999);
+                        pickUV=clamp(pickUV,margin,1-margin);
                         //サンプリング座標から色をサンプリングし、outputに加算
                         output+=SAMPLE_TEXTURE2D(_BlitTexture,sampler_LinearRepeat,pickUV);
                         //カウンタに加算

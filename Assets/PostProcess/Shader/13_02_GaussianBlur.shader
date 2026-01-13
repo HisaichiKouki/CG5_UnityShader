@@ -45,6 +45,8 @@ Shader "Custom/13_02_GaussianBlur"
                 float totalWeight=0;
                 //カーネルの範囲は3*sigmaの範囲
                 float kernelWidth=3*_Sigma;
+                //回り込み防止用にテクセルサイズの半分を取得
+                float2 margin=_BlitTexture_TexelSize.xy/2;
 
                 int count=0;
                 for(float y=-kernelWidth / 2; y<= kernelWidth / 2; y+= _StepWidth)
@@ -56,7 +58,7 @@ Shader "Custom/13_02_GaussianBlur"
                         //サンプリング座標
                         float2 pickUV=IN.texcoord+float2(x,y);
                         //回り込み防止
-                        pickUV=clamp(pickUV,0.001,0.999);
+                        pickUV=clamp(pickUV,margin,1-margin);
                         //それらの距離
                         float d=distance(drawUV,pickUV);
                         //ガウス関数から重みを産出

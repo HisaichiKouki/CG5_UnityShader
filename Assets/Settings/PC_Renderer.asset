@@ -1,34 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7857993614067681609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 008607fc273af284b8b2b5ede791b57c, type: 3}
-  m_Name: PostEffectRenderFeature
-  m_EditorClassIdentifier: Assembly-CSharp::PostEffectRenderFeature
-  m_Active: 0
-  postEffectMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
-  passThroughMaterial_: {fileID: 2100000, guid: 94689ddd7d52eae438e799740266d3fc, type: 2}
---- !u!114 &-5292533809211313721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69a8aba8d5386c047a769be0e4720b42, type: 3}
-  m_Name: ClippingCheckRenderFeature
-  m_EditorClassIdentifier: Assembly-CSharp::ClippingCheckRenderFeature
-  m_Active: 0
-  postEffectMaterial_: {fileID: 2100000, guid: f0a641dc5b0b03e4c988542dc8c0a11b, type: 2}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,11 +25,8 @@ MonoBehaviour:
     probeSamplingDebugTexture: {fileID: 2800000, guid: 24ec0e140fb444a44ab96ee80844e18e, type: 3}
     probeVolumeBlendStatesCS: {fileID: 7200000, guid: b9a23f869c4fd45f19c5ada54dd82176, type: 3}
   m_RendererFeatures:
-  - {fileID: 7833122117494664109}
-  - {fileID: 5975609179947359952}
-  - {fileID: -5292533809211313721}
-  - {fileID: -7857993614067681609}
-  m_RendererFeatureMap: ad6b866f10d7b46cd05e5397e3a0ed52c7f136a48a248db6b736350271ccf292
+  - {fileID: 1628607843899779764}
+  m_RendererFeatureMap: b4aa0f8e34fa9916
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 0}
@@ -87,7 +55,7 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
---- !u!114 &5975609179947359952
+--- !u!114 &1628607843899779764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,34 +64,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18e9f89186d20e4f896e8421a91451a, type: 3}
-  m_Name: ToneMappingRenderFeature
-  m_EditorClassIdentifier: Assembly-CSharp::ToneMappingRenderFeature
+  m_Script: {fileID: 11500000, guid: 6decba3bb98a72446826c309d2418fab, type: 3}
+  m_Name: s14_BloomRenderFeature
+  m_EditorClassIdentifier: Assembly-CSharp::s14_BloomRenderFeature
   m_Active: 1
-  postEffectMaterial_: {fileID: 2100000, guid: 14af6822084e9f24184033e1824377b9, type: 2}
---- !u!114 &7833122117494664109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
-  m_Name: ScreenSpaceAmbientOcclusion
-  m_EditorClassIdentifier: 
-  m_Active: 0
-  m_Settings:
-    AOMethod: 0
-    Downsample: 0
-    AfterOpaque: 0
-    Source: 1
-    NormalSamples: 1
-    Intensity: 0.4
-    DirectLightingStrength: 0.25
-    Radius: 0.3
-    Samples: 1
-    BlurQuality: 0
-    Falloff: 100
-    SampleCount: -1
+  blurMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
+  luminanceExtractMaterial_: {fileID: 2100000, guid: 855eab7f96faebf4cbe6787ebc8e98c6, type: 2}
+  compositeTextureMaterial_: {fileID: 2100000, guid: be6a24670a1f8c04e9ddbb342d353c6f, type: 2}
