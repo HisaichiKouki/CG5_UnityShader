@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_ex01_02_IntersectionHighLight
-  m_Shader: {fileID: 4800000, guid: b4b244193a370664baba9723d4fcfcf5, type: 3}
+  m_Name: Custom_DepthOnly
+  m_Shader: {fileID: 4800000, guid: d0922c8e33a2a654cbf15ee532a05d81, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -28,8 +28,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Softness: 0.32
-    m_Colors: []
+    m_Floats: []
+    m_Colors:
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
