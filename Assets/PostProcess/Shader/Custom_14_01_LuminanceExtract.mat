@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _ThresholdMax: 1.48
+    - _ThresholdMax: 1.5
     - _ThresholdMin: 1
     m_Colors: []
   m_BuildTextureStacks: []
