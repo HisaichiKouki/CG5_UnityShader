@@ -117,3 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddc1ac6bac0cd14b9dfc8e97bf6e5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
+  prefabToSpawn: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0

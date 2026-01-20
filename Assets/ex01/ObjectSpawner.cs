@@ -29,7 +29,7 @@ public partial class ObjectSpawner : MonoBehaviour
         {
             // 3. 当たった位置（hit.point）にオブジェクトを生成
             // 第2引数は当たった位置、第3引数は回転（無回転）
-            Instantiate(prefabToSpawn, hit.point, Quaternion.identity);
+            Instantiate(prefabToSpawn, hit.point, prefabToSpawn.transform.rotation);
 
             Debug.Log("生成した場所: " + hit.point);
         }
