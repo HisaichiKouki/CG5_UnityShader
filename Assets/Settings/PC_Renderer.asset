@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ec2df979cc8cf4097e50aee4bafe06, type: 3}
   m_Name: s14_ex_KawaseBloomRenderFeature
   m_EditorClassIdentifier: Assembly-CSharp::s14_ex_KawaseBloomRenderFeature
-  m_Active: 1
+  m_Active: 0
   blurMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
   luminanceExtractMaterial_: {fileID: 2100000, guid: 855eab7f96faebf4cbe6787ebc8e98c6, type: 2}
   compositeTextureMaterial_: {fileID: 2100000, guid: be6a24670a1f8c04e9ddbb342d353c6f, type: 2}
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: 1628607843899779764}
   - {fileID: -55949808836831543}
-  m_RendererFeatureMap: b4aa0f8e34fa9916c99607fff13939ff
+  - {fileID: 220011928104287266}
+  m_RendererFeatureMap: b4aa0f8e34fa9916c99607fff13939ff223c01d5aea30d03
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 0}
@@ -72,6 +73,20 @@ MonoBehaviour:
   m_DepthTextureFormat: 0
   m_AccurateGbufferNormals: 0
   m_IntermediateTextureMode: 0
+--- !u!114 &220011928104287266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d01ef2aaff53944bf3b593924d3924, type: 3}
+  m_Name: DrawDepthRenderFeature
+  m_EditorClassIdentifier: Assembly-CSharp::DrawDepthRenderFeature
+  m_Active: 1
+  depthTextureMaterial_: {fileID: 2100000, guid: add69f6ce06047f4898d41ff461c2dfb, type: 2}
 --- !u!114 &1628607843899779764
 MonoBehaviour:
   m_ObjectHideFlags: 0
