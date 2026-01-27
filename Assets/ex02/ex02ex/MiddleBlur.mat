@@ -25,7 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _Sigma: 0.00122
+    - _Sigma: 0.00308
     - _StepWidth: 0.00556
     m_Colors: []
   m_BuildTextureStacks: []

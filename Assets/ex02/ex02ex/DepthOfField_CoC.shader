@@ -90,17 +90,17 @@ Shader "Custom/DepthOfField_CoC"
                 float middleWeight = smoothstep(_MiddleBlurLevel - _BlurLevelWidth / 2, _MiddleBlurLevel + _BlurLevelWidth / 2, coc);
                 // 強ブラーがかかる範囲
                 float highWeight = smoothstep(_HighBlurLevel - _BlurLevelWidth / 2, _HighBlurLevel + _BlurLevelWidth / 2, coc);
-            
-                // //ブレンド前に色を差し替えてデバッグする
-                // //弱ブラー箇所は赤に
-                // lowBlurColor=half4(1,0,0,1);
-                // //中ブラー箇所は緑に
-                // middleBlurColor=half4(0,1,0,1);
-                // //強ブラー箇所は青に
-                // highBlurColor=half4(0,0,1,1);
 
-                // 各テクスチャのブレンド
-                half4 output = inFocusColor;
+////ブレンド前に色を差し替えてデバッグする
+////弱ブラー箇所は赤に
+//lowBlurColor = half4(1, 0, 0, 1);
+////中ブラー箇所は緑に
+//middleBlurColor = half4(0, 1, 0, 1);
+////強ブラー箇所は青に
+//highBlurColor = half4(0, 0, 1, 1);
+
+// 各テクスチャのブレンド
+half4 output = inFocusColor;
                 output = lerp(output, lowBlurColor, lowWeight);
                 output = lerp(output, middleBlurColor, middleWeight);
                 output = lerp(output, highBlurColor, highWeight);

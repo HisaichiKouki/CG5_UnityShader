@@ -45,7 +45,7 @@ Material:
     - _FNumber: 4.6
     - _FocalLengthMilimerter: 50
     - _FocusDistance: 2
-    - _HighBlurLevel: 0.161
+    - _HighBlurLevel: 0.229
     - _LowBlurLevel: 0.104
     - _MiddleBlurLevel: 0.139
     m_Colors: []
