@@ -45,7 +45,8 @@ MonoBehaviour:
   - {fileID: -55949808836831543}
   - {fileID: 220011928104287266}
   - {fileID: 4294085271806660893}
-  m_RendererFeatureMap: b4aa0f8e34fa9916c99607fff13939ff223c01d5aea30d031dd145bdcda7973b
+  - {fileID: 2608553939494494890}
+  m_RendererFeatureMap: b4aa0f8e34fa9916c99607fff13939ff223c01d5aea30d031dd145bdcda7973baae203bdfc713324
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 0}
@@ -104,6 +105,24 @@ MonoBehaviour:
   blurMaterial_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
   luminanceExtractMaterial_: {fileID: 2100000, guid: 855eab7f96faebf4cbe6787ebc8e98c6, type: 2}
   compositeTextureMaterial_: {fileID: 2100000, guid: be6a24670a1f8c04e9ddbb342d353c6f, type: 2}
+--- !u!114 &2608553939494494890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbf324ac13b0be41bb099c5d7b6c1df, type: 3}
+  m_Name: DepthOfFieldRenderFeature_CoC
+  m_EditorClassIdentifier: Assembly-CSharp::DepthOfFieldRenderFeature_CoC
+  m_Active: 1
+  depthMat_: {fileID: 2100000, guid: add69f6ce06047f4898d41ff461c2dfb, type: 2}
+  lowBlurMat_: {fileID: 2100000, guid: 535b2d1c2c6e68c4695455af45cc22b9, type: 2}
+  middleBlurMat_: {fileID: 2100000, guid: c8772d6657b00314abfbb1d060351beb, type: 2}
+  highBlurMat_: {fileID: 2100000, guid: a6932d71310a49242bd9adf0f213df87, type: 2}
+  dofMat_: {fileID: 2100000, guid: c4ddbd63d49075e4bb576b7a3652bacf, type: 2}
 --- !u!114 &4294085271806660893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bbb44493e12d14c88aee2a1f17b5d8, type: 3}
   m_Name: DepthOfFieldRenderFeature
   m_EditorClassIdentifier: Assembly-CSharp::DepthOfFieldRenderFeature
-  m_Active: 1
+  m_Active: 0
   depthMat_: {fileID: 2100000, guid: add69f6ce06047f4898d41ff461c2dfb, type: 2}
   dofhMat_: {fileID: 2100000, guid: 2c72a58c27046a24588b0c9295dcde1d, type: 2}
   blurMat_: {fileID: 2100000, guid: f9459813b4a2d0e4d998d36c164b5ab2, type: 2}
