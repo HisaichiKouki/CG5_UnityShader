@@ -104,7 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntersectionHighlightSphere
   scaleUpTime: 3
-  maxSize: 30
+  maxSize: 15
+  myRenderer: {fileID: 7280706426818881981}
 --- !u!114 &-6562127383469837000
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -115,17 +115,18 @@ public class DepthOfFieldRenderPass_CoC : ScriptableRenderPass
         TextureDesc blurTexDesc = renderGraph.GetTextureDesc(cameraTex);
         blurTexDesc.name = "_LowBlurTex";
         //縮小バッファ
-        int div = 2;
-        blurTexDesc.width /= div;
-        blurTexDesc.height /= div;
+        float div = 1.5f;
+        blurTexDesc.width=(int)((float) blurTexDesc.width / div);
+        blurTexDesc.height = (int)((float)blurTexDesc.height / div);
+
         blurTexDesc.depthBufferBits = 0;
         TextureHandle lowBlurTex = renderGraph.CreateTexture(blurTexDesc);
 
         blurTexDesc.name = "_MiddleBlurTex";
         TextureHandle middleBlurTex = renderGraph.CreateTexture(blurTexDesc);
 
-        blurTexDesc.width /= div;
-        blurTexDesc.height /= div;
+       // blurTexDesc.width = (int)((float)blurTexDesc.width / div);
+        //blurTexDesc.height = (int)((float)blurTexDesc.height / div);
         blurTexDesc.depthBufferBits = 0;
         blurTexDesc.name = "_HighBlurTex";
         TextureHandle highBlurTex = renderGraph.CreateTexture(blurTexDesc);

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_ex01_01_SoftParticle
-  m_Shader: {fileID: 4800000, guid: 4b85be11966c8be4b89ca3b4d2cb5f4a, type: 3}
+  m_Name: Custom_ex01_02_IntersectionHighLight
+  m_Shader: {fileID: 4800000, guid: b4b244193a370664baba9723d4fcfcf5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -29,8 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Softness: 0.15
-    m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Softness: 0.32
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

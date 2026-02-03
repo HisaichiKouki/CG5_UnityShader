@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_ex01_01_SoftParticle
-  m_Shader: {fileID: 4800000, guid: 4b85be11966c8be4b89ca3b4d2cb5f4a, type: 3}
+  m_Name: Unlit_HDRMultipath 1
+  m_Shader: {fileID: 4800000, guid: fbd1086d0c1ab4d49a1533a50b62ec06, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,14 +23,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 35d4d8a1621a56e4e9c1de81f95e4513, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Softness: 0.15
+    - _Discard: 0.691
+    - _Intensity: 4.54
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _BackColor: {r: 0.2783019, g: 0.43679246, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _FrontColor: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
+    - _ScrollSpeed: {r: 0, g: -2, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

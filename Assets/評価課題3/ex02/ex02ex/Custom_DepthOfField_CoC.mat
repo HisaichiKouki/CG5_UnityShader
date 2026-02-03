@@ -41,13 +41,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlurLevelWidth: 0.053
-    - _FNumber: 4.6
-    - _FocalLengthMilimerter: 50
-    - _FocusDistance: 2
-    - _HighBlurLevel: 0.229
-    - _LowBlurLevel: 0.104
-    - _MiddleBlurLevel: 0.139
+    - _BlurLevelWidth: 0.12
+    - _FNumber: 4.8
+    - _FocalLengthMilimerter: 69.04
+    - _FocusDistance: 7.5
+    - _HighBlurLevel: 0.13
+    - _LowBlurLevel: 0.05
+    - _MiddleBlurLevel: 0.09
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

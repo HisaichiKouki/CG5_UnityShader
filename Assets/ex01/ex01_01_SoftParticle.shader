@@ -5,6 +5,7 @@ Shader "Custom/ex01_01_SoftParticle"
         _BaseMap("BaseMap", 2D) = "white"{}
         //透過有効の距離
         _Softness("Softness",Range(0.001,1.0))=0.15
+    _Color("Color",Color)=(0,0,0,1)
     }
 
     SubShader
@@ -48,6 +49,7 @@ Shader "Custom/ex01_01_SoftParticle"
             CBUFFER_START(UnityPerMaterial)
                 float4 _BaseMap_ST;
                 float _Softness;
+float4 _Color;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -83,7 +85,7 @@ Shader "Custom/ex01_01_SoftParticle"
                half4 col=tex*IN.color;
                //深度値と距離で得た値をアルファ値に乗さん
                col.a*=soft;
-               return col;
+               return col* _Color;
             }
             ENDHLSL
         }
